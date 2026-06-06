@@ -17,6 +17,9 @@ SRC_URL="https://raw.githubusercontent.com/arjunlohan/claude.md/main/CLAUDE.md"
 # Target path: first CLI argument, or ./CLAUDE.md by default.
 TARGET="${1:-./CLAUDE.md}"
 
+# Make sure the target's parent directory exists (supports nested paths).
+mkdir -p "$(dirname "$TARGET")"
+
 # If something is already at the target, preserve it as <target>.bak.
 if [ -e "$TARGET" ]; then
   cp "$TARGET" "$TARGET.bak"
