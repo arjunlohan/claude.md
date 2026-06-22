@@ -124,10 +124,10 @@ Workflows are new and use **significantly more tokens** — they are not the def
 
 ## Design & Interface Craft
 
-For any UI, frontend, animation, or "make it feel better" work, apply the **finesse** skill — a design-engineering craft layer (motion tokens, interaction states, surfaces, typography, layout & color, performance, accessibility) distilled from the people who set the bar (Rauno Freiberg, Emil Kowalski, Vercel Geist, Linear, Apple HIG, Refactoring UI). It lives in this repo at `skills/finesse/`.
+For any UI, frontend, animation, or "make it feel better" work, apply the **finesse** skill — a design-engineering craft layer (motion tokens, interaction states, surfaces, typography, layout & color, performance, accessibility) distilled from the people who set the bar (Rauno Freiberg, Emil Kowalski, Vercel Geist, Linear, Apple HIG, Refactoring UI). It lives in its own repo, **[arjunlohan/finesse](https://github.com/arjunlohan/finesse)**.
 
 - **It auto-triggers** on UI/polish tasks; invoke it explicitly with `/finesse`, or run it as a review pass on frontend changes. No import is needed here — Claude Code auto-discovers installed skills, so this is just the pointer (keeping this file self-contained).
-- **Get it:** `npx skills add arjunlohan/claude.md`, or fetch `skills/finesse/SKILL.md` (its reference docs sit beside it).
+- **Get it:** `npx skills add arjunlohan/finesse` (add `-g` for global, user-level).
 - **The rule that dominates:** motion serves a purpose — if you can't name what an animation communicates, cut it; never animate high-frequency or keyboard-initiated actions; always honor `prefers-reduced-motion`. Pull from one motion-token scale, never hand-picked durations.
 
 ## Voice & Response Style

@@ -40,35 +40,18 @@ A quick tour of the actual sections:
 - **Task Management** — plan to `tasks/todo.md`, verify the plan, track progress, summarize changes, document results, capture lessons.
 - **Voice & Response Style** — expert-level, precise, direct; no flattery or premature validation; explicit confidence levels; accuracy over approval.
 - **Output Format: Prefer HTML for Artifacts** — when to produce a self-contained HTML deliverable instead of Markdown, what to use the full expressive range of HTML for, and what stays in Markdown (chat, source-of-truth files, short todos).
-- **Design & Interface Craft** — a pointer to the `finesse` skill (below) for UI, animation, and "make it feel better" work.
+- **Design & Interface Craft** — a pointer to the `finesse` skill (its own repo; see below) for UI, animation, and "make it feel better" work.
 
-## Skills: `finesse`
+## Companion skill: `finesse`
 
-This repo also ships an Agent Skill, **`finesse`** — a design-engineering craft layer that teaches Claude (and other skill-aware assistants) the small details that make interfaces feel polished, fast, and physical: motion, micro-interactions, surfaces, typography, performance, and accessibility.
-
-It's an **original** skill, not a fork — though it owes its framing to Jakub Krehel's [make-interfaces-feel-better](https://github.com/jakubkrehel/make-interfaces-feel-better), which it deliberately extends with a motion-token system, a first-class reduced-motion / accessibility policy, interaction states, performance, and modern platform primitives (View Transitions, `@starting-style`, scroll-driven animation).
-
-**Install it** (works with Claude Code, Codex, Cursor, and other skill-aware assistants):
+The design-engineering craft skill — motion, micro-interactions, surfaces, typography, performance, and accessibility for AI coding assistants — lives in its own repo: **[arjunlohan/finesse](https://github.com/arjunlohan/finesse)**. (It started here, then moved out so it has its own install target and never drifts from a second copy.)
 
 ```sh
-npx skills add arjunlohan/claude.md
+npx skills add arjunlohan/finesse        # project-scoped
+npx skills add arjunlohan/finesse -g     # global
 ```
 
-Or open Claude Code in any project and ask it to fetch `skills/finesse/SKILL.md`. Once present, it **auto-triggers** on UI/polish work, or you can invoke it manually with `/finesse`.
-
-**What's inside** (`skills/finesse/`):
-
-| File | Covers |
-| --- | --- |
-| `SKILL.md` | The spine: the motion-token system, core principles, common mistakes, a review/output contract + checklist |
-| `motion.md` | Duration/easing/spring tokens, enter/exit, interruptibility, origin, stagger, when-not-to-animate, modern primitives |
-| `interaction-states.md` | Hover/active/focus-visible/disabled, loading & skeletons, empty/error states, optimistic UI, menus |
-| `surfaces.md` | Concentric radius, shadows vs borders & elevation, image outlines, optical alignment, hit areas |
-| `typography.md` | Wrapping, smoothing, tabular numbers, hierarchy, measure, line-height, fluid sizing |
-| `layout-and-color.md` | Spacing & grouping, alignment, near-black/white, functional color scales, depth |
-| `performance.md` | Compositor-only animation, `will-change`, FLIP, the tool ladder, 60fps/RAIL, perceived speed |
-| `accessibility.md` | `prefers-reduced-motion` policy, forced-colors, contrast, focus, semantics & ARIA |
-| `sources.md` | Who each principle comes from, with links |
+It **auto-triggers** on UI / "make it feel better" work, or you can invoke it with `/finesse`. See the [finesse repo](https://github.com/arjunlohan/finesse) for the full file breakdown and sources; `CLAUDE.md` here points to it from its **Design & Interface Craft** section.
 
 ## Structure & philosophy
 
