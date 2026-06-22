@@ -1,0 +1,12 @@
+# Local agent / skill-manager artifacts
+# (created by `npx skills add` if run inside this repo, and by local tooling)
+.agents/
+.claude/
+skills-lock.json
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
