@@ -34,6 +34,7 @@ The installer:
 A quick tour of the actual sections:
 
 - **Core Principles** — simplicity first, no laziness (root causes, no temporary fixes), minimal impact.
+- **Model Calibration** — behavioral tuning for the running model: shared rules (act when informed, ground progress claims in tool results, never end a turn on a promise, don't over-engineer) plus Claude Fable 5 notes (brief instructions, no reasoning-echo, ignore context countdowns) and Claude Opus 4.8 notes (literal instruction following, effort as the lever, deliberate subagent use).
 - **Workflow Orchestration** — plan mode by default for non-trivial work, delegating to subagents, a self-improvement loop that records corrections to `tasks/lessons.md`, verification before anything is called done, demanding elegance (in balance), and autonomous bug fixing.
 - **Compute Escalation Ladder** — a three-rung rule for matching machinery to the job: stay in the main context, delegate to subagents, or hand-roll a dynamic workflow — and climb only when the current rung is actually failing.
 - **Dynamic Workflows** — the deep section: the three failure modes they fix (agentic laziness, self-preferential bias, goal drift), the workflow API (`agent`, `parallel`, `pipeline`), the six composable patterns, where workflows shine, when **not** to use them, and practical tips.
@@ -41,17 +42,18 @@ A quick tour of the actual sections:
 - **Voice & Response Style** — expert-level, precise, direct; no flattery or premature validation; explicit confidence levels; accuracy over approval.
 - **Output Format: Prefer HTML for Artifacts** — when to produce a self-contained HTML deliverable instead of Markdown, what to use the full expressive range of HTML for, and what stays in Markdown (chat, source-of-truth files, short todos).
 - **Design & Interface Craft** — a pointer to the `finesse` skill (its own repo; see below) for UI, animation, and "make it feel better" work.
+- **Prompt & Agent Craft** — a pointer to the `sharpen` skill (its own repo; see below) for writing and refining prompts.
 
-## Companion skill: `finesse`
+## Companion skills
 
-The design-engineering craft skill — motion, micro-interactions, surfaces, typography, performance, and accessibility for AI coding assistants — lives in its own repo: **[arjunlohan/finesse](https://github.com/arjunlohan/finesse)**. (It started here, then moved out so it has its own install target and never drifts from a second copy.)
+The craft skills live in their own repos — each with its own install target, so there's never a drifting second copy. `CLAUDE.md` here points to them from its **Design & Interface Craft** and **Prompt & Agent Craft** sections.
 
-```sh
-npx skills add arjunlohan/finesse        # project-scoped
-npx skills add arjunlohan/finesse -g     # global
-```
+| Skill | What it does | Install |
+| --- | --- | --- |
+| [**finesse**](https://github.com/arjunlohan/finesse) | Design-engineering craft — motion tokens, micro-interactions, surfaces, typography, performance, accessibility. Auto-triggers on UI / "make it feel better" work; `/finesse`. | `npx skills add arjunlohan/finesse` |
+| [**sharpen**](https://github.com/arjunlohan/sharpen) | Prompt-engineering coach — scouts context, interviews for the answers that matter, rewrites prompts tuned to the target model (Claude Fable 5 / Opus 4.8). Auto-triggers on prompt work; `/sharpen`. | `npx skills add arjunlohan/sharpen` |
 
-It **auto-triggers** on UI / "make it feel better" work, or you can invoke it with `/finesse`. See the [finesse repo](https://github.com/arjunlohan/finesse) for the full file breakdown and sources; `CLAUDE.md` here points to it from its **Design & Interface Craft** section.
+Add `-g` to either command for a global (user-level) install.
 
 ## Structure & philosophy
 
