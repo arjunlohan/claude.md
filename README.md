@@ -33,20 +33,16 @@ The installer:
 
 A quick tour of the actual sections:
 
-- **Core Principles** — simplicity first, no laziness (root causes, no temporary fixes), minimal impact.
-- **Model Calibration** — behavioral tuning for the running model: shared rules (act when informed, ground progress claims in tool results, never end a turn on a promise, don't over-engineer) plus Claude Fable 5 notes (brief instructions, no reasoning-echo, ignore context countdowns) and Claude Opus 4.8 notes (literal instruction following, effort as the lever, deliberate subagent use).
-- **Workflow Orchestration** — plan mode gated by risk (ambiguous, architectural, or hard to reverse — not step count), delegating to subagents, a self-improvement loop with one lessons home, verification before anything is called done, demanding elegance (in balance), and autonomous bug fixing.
-- **Compute Escalation Ladder** — a three-rung rule for matching machinery to the job: stay in the main context, delegate to subagents, or hand-roll a dynamic workflow — and climb only when the current rung is actually failing.
-- **Dynamic Workflows** — the behavioral core: the three failure modes they fix (agentic laziness, self-preferential bias, goal drift) and the rules of use (not the default, budget & pilot, `/goal` + `/loop`, quarantine). The full field guide — API, patterns, use cases — lives in the [appendix below](#appendix-dynamic-workflows-field-guide).
-- **Task Management** — plan to `tasks/todo.md`, verify the plan, track progress, summarize changes, document results, capture lessons.
-- **Voice & Response Style** — expert-level, precise, direct; no flattery or premature validation; explicit confidence levels; accuracy over approval.
-- **Output Format: Prefer HTML for Artifacts** — when to produce a self-contained HTML deliverable instead of Markdown, what to use the full expressive range of HTML for, and what stays in Markdown (chat, source-of-truth files, short todos).
-- **Design & Interface Craft** — a pointer to the `finesse` skill (its own repo; see below) for UI, animation, and "make it feel better" work.
-- **Prompt & Agent Craft** — a pointer to the `sharpen` skill (its own repo; see below) for writing and refining prompts.
+- **How to work**: the smallest change that fully solves the problem, literal reading of requests, planning only when a wrong plan is expensive, stopping only when the work needs you, proof before anything is called done, and a `tasks/todo.md` checklist for long or multi-session work.
+- **Compute**: a three-rung ladder (main context, subagents, dynamic workflows) that climbs only when the current rung is failing. Workflows are proposed with a rough cost and wait for an explicit yes. The full field guide (API, patterns, use cases) lives in the [appendix below](#appendix-dynamic-workflows-field-guide).
+- **Lessons**: one home per lesson, chosen by scope: project memory for repo facts, `~/.claude/rules/field-lessons.md` for lessons that hold across repos.
+- **Voice**: answer first, correct wrong premises, be pointed, hold positions under pushback, and calibrate confidence; plus writing rules for everything produced (no em dashes, no AI tells).
+- **Deliverables**: when to produce a self-contained HTML page instead of Markdown, and what stays in Markdown (chat, files committed to a repo, anything posted to GitHub).
+- **Skills**: routing to the `finesse` and `sharpen` companion skills (each in its own repo; see below).
 
 ## Companion skills
 
-The craft skills live in their own repos — each with its own install target, so there's never a drifting second copy. `CLAUDE.md` here points to them from its **Design & Interface Craft** and **Prompt & Agent Craft** sections.
+The craft skills live in their own repos, each with its own install target, so there's never a drifting second copy. `CLAUDE.md` here points to them from its **Skills** section.
 
 | Skill | What it does | Install |
 | --- | --- | --- |
