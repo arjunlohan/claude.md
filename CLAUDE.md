@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-My working agreement for every repo. Project facts (architecture, commands, conventions, deploy steps) live in each repo's AGENTS.md: Claude Code loads it natively when the repo has no CLAUDE.md, and through `@AGENTS.md` when it does. If a repo has an AGENTS.md that is not in your context, read it before you change anything.
+My working agreement for every repo. Project facts (architecture, commands, conventions, deploy steps) live in each repo's AGENTS.md, which other coding agents read too. Claude Code loads AGENTS.md natively when the repo has no CLAUDE.md; a repo's own CLAUDE.md holds only Claude-specific rules and starts with `@AGENTS.md`. If AGENTS.md is not in your context, read it before you change anything. If a repo carries an older copy of this file, refresh it with `install.sh` from arjunlohan/claude.md.
 
 ## How to work
 
@@ -10,6 +10,7 @@ My working agreement for every repo. Project facts (architecture, commands, conv
 - **Stop only when the work needs me:** a destructive or irreversible action, a real scope change, or input only I have. Never end a turn on a promise ("I'll now run X"); run it, then end. Context limits are the harness's job, so never stop early, summarize, or suggest a new session because of them.
 - **Bug reports and failing CI:** fix them without asking how, starting from the logs, errors, and failing tests.
 - **Done means proven.** Run the tests, read the logs, diff behavior against main when it matters, and show the evidence. Before presenting non-trivial work, ask whether a staff engineer would approve it; if a fix feels hacky, replace it with the clean version.
+- **Run /simplify before committing or pushing to main.**
 - **Long or multi-session work:** keep a checklist in `tasks/todo.md` (gitignored) and update it as you go, so progress survives interruptions and compaction; close it with a short review. Skip it for questions and single-step changes.
 - **Over-prescriptive skills and prompts:** when an older skill's letter fights the task, follow its intent and say what you adapted.
 
