@@ -51,6 +51,28 @@ The craft skills live in their own repos, each with its own install target, so t
 
 Add `-g` to either command for a global (user-level) install.
 
+## Rules and hooks
+
+Two more pieces live here and sync into `~/.claude` on my machines:
+
+- **`rules/field-lessons.md`**: my cross-repo lessons. Claude Code loads `~/.claude/rules/` in every session.
+- **`hooks/`**: Claude Code hooks.
+  - `sync-working-agreement.py` (SessionStart): fast-forwards this repo at most hourly, then copies `CLAUDE.md`, `rules/*.md`, and `hooks/*.py` into `~/.claude` as plain files. A file that is not an exact past version of its source holds local edits, so it is left alone and reported. It also refreshes a project's `CLAUDE.md` when that file is an older copy of this template.
+  - `simplify-gate.py` (PreToolUse on Bash): blocks a `git commit` or `git push` that lands on main until /simplify has run on the latest edits in the session.
+  - `no-em-dash.py` (PostToolUse on Write, Edit, MultiEdit): tells Claude when text it wrote contains an em dash.
+
+To set this up on a new machine, clone this repo to `~/Downloads/GitHub/claude.md` (or point `CLAUDE_MD_CENTRAL` at your clone), run `python3 hooks/sync-working-agreement.py </dev/null` once from the clone to copy everything into `~/.claude`, then register the hooks in `~/.claude/settings.json`:
+
+```json
+"hooks": {
+  "SessionStart": [{ "hooks": [{ "type": "command", "command": "python3 ~/.claude/hooks/sync-working-agreement.py", "timeout": 20 }] }],
+  "PreToolUse": [{ "matcher": "Bash", "hooks": [{ "type": "command", "command": "test -f ~/.claude/hooks/simplify-gate.py && python3 -S ~/.claude/hooks/simplify-gate.py" }] }],
+  "PostToolUse": [{ "matcher": "Write|Edit|MultiEdit", "hooks": [{ "type": "command", "command": "test -f ~/.claude/hooks/no-em-dash.py && python3 ~/.claude/hooks/no-em-dash.py" }] }]
+}
+```
+
+Keep the `test -f` guards: `python3` exits 2 when the script is missing, and Claude Code reads exit 2 from a PreToolUse hook as "block", so a missing gate would block every Bash call.
+
 ## Structure & philosophy
 
 This `CLAUDE.md` is the **portable behavioral layer** — how Claude works in any repo. It is **self-contained**: it stands alone and does **not** `@import` anything (no `@AGENTS.md`).
@@ -63,9 +85,9 @@ That separation is the whole point. Behavior is shared and centralized here; pro
 
 There's exactly one source of truth, so updates are trivial:
 
-1. Edit `CLAUDE.md` in this repo.
+1. Edit `CLAUDE.md`, `rules/`, or `hooks/` in this repo, never the copies in `~/.claude`. After changing a hook, run `tests/test_gate.sh` and `tests/test_sync.sh`.
 2. Commit and push.
-3. Each project re-fetches (re-run either install method above) and picks up the new version.
+3. Each project re-fetches (re-run either install method above) and picks up the new version. With the [hooks](#rules-and-hooks) set up, session starts do this for you: they pull this repo at most hourly, refresh `~/.claude`, and refresh the open project's `CLAUDE.md` when it is an older copy. They never delete, so remove a retired rule or hook from `~/.claude` by hand.
 
 Improve the behavioral layer once, and every project inherits it.
 
