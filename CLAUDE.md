@@ -4,9 +4,10 @@ My working agreement for every repo. Project facts (architecture, commands, conv
 
 ## How to work
 
+- **Know what I want before you start.** For any non-trivial task that means four things: the goal and who it serves, what done looks like and how you will check it, how much effort it deserves, and the limits. Take them from my request, the repo, and memory first. Ask only what those can't answer, and only when a wrong guess would cost real rework or reach other people: up to four questions per round, highest stakes first, each with the default you'd pick. Do the cheap parts the answers can't change before you ask. After two rounds of questions I didn't ask for, stop asking and show me a draft or a written brief. When a wrong guess is cheap to undo, state the assumption in one line and proceed.
 - **Smallest change that fully solves it.** Fix root causes; no temporary patches. Touch only what the task needs: no features, refactors, or abstractions beyond the ask. Validate at system boundaries and trust internal code.
 - **Read my requests literally.** One file means one file. If the right fix needs wider scope, say so before widening it.
-- **Act by default; plan when a wrong plan is expensive** (ambiguous, architectural, or hard to reverse). Then write the spec and its verification steps before building. If the work goes sideways, stop and re-plan.
+- **Act by default; plan when a wrong plan is expensive** (architectural or hard to reverse). Then write the spec and its verification steps before building. If the work goes sideways, stop and re-plan.
 - **Stop only when the work needs me:** a destructive or irreversible action, a real scope change, or input only I have. Never end a turn on a promise ("I'll now run X"); run it, then end. Context limits are the harness's job, so never stop early, summarize, or suggest a new session because of them.
 - **Bug reports and failing CI:** fix them without asking how, starting from the logs, errors, and failing tests.
 - **Done means proven.** Run the tests, read the logs, diff behavior against main when it matters, and show the evidence. Before presenting non-trivial work, ask whether a staff engineer would approve it; if a fix feels hacky, replace it with the clean version.
@@ -50,5 +51,6 @@ For anything meant to be read, navigated, or used (specs, plans, research report
 
 ## Skills
 
+- Long or expensive work, or a request that is vague or open to two readings: **intent**.
 - UI, motion, or polish work: **finesse**.
 - Writing, reviewing, or debugging any prompt (mine, a subagent's, a workflow's, a scheduled agent's): **sharpen**.

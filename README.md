@@ -33,12 +33,12 @@ The installer:
 
 A quick tour of the actual sections:
 
-- **How to work**: the smallest change that fully solves the problem, literal reading of requests, planning only when a wrong plan is expensive, stopping only when the work needs you, proof before anything is called done, and a `tasks/todo.md` checklist for long or multi-session work.
+- **How to work**: knowing what you want before starting (asking only where a wrong guess would be costly), the smallest change that fully solves the problem, literal reading of requests, planning only when a wrong plan is expensive, stopping only when the work needs you, proof before anything is called done, and a `tasks/todo.md` checklist for long or multi-session work.
 - **Compute**: a three-rung ladder (main context, subagents, dynamic workflows) that climbs only when the current rung is failing. Workflows are proposed with a rough cost and wait for an explicit yes. The full field guide (API, patterns, use cases) lives in the [appendix below](#appendix-dynamic-workflows-field-guide).
 - **Lessons**: one home per lesson, chosen by scope: project memory for repo facts, `~/.claude/rules/field-lessons.md` for lessons that hold across repos.
 - **Voice**: answer first, correct wrong premises, be pointed, hold positions under pushback, and calibrate confidence; plus writing rules for everything produced (no em dashes, no AI tells).
 - **Deliverables**: when to produce a self-contained HTML page instead of Markdown, and what stays in Markdown (chat, files committed to a repo, anything posted to GitHub).
-- **Skills**: routing to the `finesse` and `sharpen` companion skills (each in its own repo; see below).
+- **Skills**: routing to the `intent`, `finesse`, and `sharpen` companion skills (each in its own repo; see below).
 
 ## Companion skills
 
@@ -46,10 +46,11 @@ The craft skills live in their own repos, each with its own install target, so t
 
 | Skill | What it does | Install |
 | --- | --- | --- |
+| [**intent**](https://github.com/arjunlohan/intent) | Works out what you want before Claude starts: a brief (goal, done check, effort, limits) filled from context first, with questions only where a wrong guess is costly. The full procedure behind the first rule in How to work. Auto-triggers on long or ambiguous work; `/intent`. | `npx skills add arjunlohan/intent` |
 | [**finesse**](https://github.com/arjunlohan/finesse) | Design-engineering craft — motion tokens, micro-interactions, surfaces, typography, performance, accessibility. Auto-triggers on UI / "make it feel better" work; `/finesse`. | `npx skills add arjunlohan/finesse` |
 | [**sharpen**](https://github.com/arjunlohan/sharpen) | Prompt-engineering coach — scouts context, interviews for the answers that matter, rewrites prompts tuned to the target model (Claude Fable 5 / Opus 4.8). Auto-triggers on prompt work; `/sharpen`. | `npx skills add arjunlohan/sharpen` |
 
-Add `-g` to either command for a global (user-level) install.
+Add `-g` to any of these commands for a global (user-level) install.
 
 ## Rules and hooks
 
