@@ -14,3 +14,6 @@ Source: `rules/field-lessons.md` in arjunlohan/claude.md (cloned at `~/Downloads
 - Measure figure lettering in the built PDF (each `Tf` size times the inclusion scale); `helvet`'s `scaled=0.92` and fake small caps shrink it below the nominal size.
 - A model's copy edit can keep every number yet shift meaning (sent→used, decided→finalized, an ambiguous "which" resolved wrongly); read every changed sentence against the original.
 - claude.ai's Upload a skill page takes a zip with one top-level folder holding SKILL.md and rejects a `.claude-plugin` manifest; build it with skill-creator's `package_skill.py` instead of copying the layout of a zip you were handed.
+- ffmpeg's RGB to YUV conversion defaults to BT.601, but players read HD as BT.709; set `scale=out_color_matrix=bt709` and tag the stream (`-colorspace bt709 -color_primaries bt709 -color_trc bt709`), or colors shift.
+- `caffeinate` does not stop sleep on a dying battery; check `pmset -g batt` before an unattended run.
+- In zsh, `jobs -r | wc -l` reads 0 in a pipeline, so a job limiter built on it never waits; count jobs with `${#jobstates}`.
