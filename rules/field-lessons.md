@@ -17,3 +17,4 @@ Source: `rules/field-lessons.md` in arjunlohan/claude.md (cloned at `~/Downloads
 - ffmpeg's RGB to YUV conversion defaults to BT.601, but players read HD as BT.709; set `scale=out_color_matrix=bt709` and tag the stream (`-colorspace bt709 -color_primaries bt709 -color_trc bt709`), or colors shift.
 - `caffeinate` does not stop sleep on a dying battery; check `pmset -g batt` before an unattended run.
 - In zsh, `jobs -r | wc -l` reads 0 in a pipeline, so a job limiter built on it never waits; count jobs with `${#jobstates}`.
+- Apply an additive migration (new nullable columns, a widened check) to production before its PR is open for merge, on the user's yes: a merge from another session or the GitHub button can land first and leave deployed code naming columns that do not exist.
