@@ -18,3 +18,4 @@ Source: `rules/field-lessons.md` in arjunlohan/claude.md (cloned at `~/Downloads
 - `caffeinate` does not stop sleep on a dying battery; check `pmset -g batt` before an unattended run.
 - In zsh, `jobs -r | wc -l` reads 0 in a pipeline, so a job limiter built on it never waits; count jobs with `${#jobstates}`.
 - Apply an additive migration (new nullable columns, a widened check) to production before its PR is open for merge, on the user's yes: a merge from another session or the GitHub button can land first and leave deployed code naming columns that do not exist.
+- Run a migration as a role without superuser rights on a scratch copy before production: it can pass as the local Postgres superuser and fail on a managed database whose admin role is not one (PlanetScale refused a function whose `set` clause named an extension setting the session had not loaded yet).
